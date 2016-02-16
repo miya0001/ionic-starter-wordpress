@@ -34,25 +34,25 @@ angular.module( 'starter', [ 'ionic', 'starter.controllers', 'starter.services' 
   $stateProvider
 
   // setup an abstract state for the tabs directive
-  .state( 'tab', {
-    url: '/tab',
+  .state( 'app', {
+    url: '/app',
     abstract: true,
     templateUrl: 'templates/tabs.html'
   } )
 
   // Each tab has its own nav history stack:
 
-  .state( 'tab.home', {
+  .state( 'app.home', {
     url: '/home',
     views: {
       'tab-home': {
-        templateUrl: 'templates/tab-posts.html',
+        templateUrl: 'templates/posts.html',
         controller: 'postsCtrl'
       }
     }
   } )
 
-  .state('tab.single', {
+  .state('app.single', {
     url: '/posts/:id',
     views: {
       'tab-home': {
@@ -62,17 +62,17 @@ angular.module( 'starter', [ 'ionic', 'starter.controllers', 'starter.services' 
     }
   })
 
-  .state( 'tab.pages', {
+  .state( 'app.pages', {
     url: '/pages',
     views: {
       'tab-pages': {
-        templateUrl: 'templates/tab-pages.html',
+        templateUrl: 'templates/pages.html',
         controller: 'pagesCtrl'
       }
     }
   } )
 
-  .state('tab.page', {
+  .state('app.page', {
     url: '/pages/:id',
     views: {
       'tab-pages': {
@@ -82,18 +82,18 @@ angular.module( 'starter', [ 'ionic', 'starter.controllers', 'starter.services' 
     }
   })
 
-  .state( 'tab.gallery', {
+  .state( 'app.gallery', {
     url: '/gallery',
     views: {
       'tab-gallery': {
-        templateUrl: 'templates/tab-gallery.html',
+        templateUrl: 'templates/gallery.html',
         controller: 'galleryCtrl'
       }
     }
   } );
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise( '/tab/home' );
+  $urlRouterProvider.otherwise( '/app/home' );
 
 } )
 
