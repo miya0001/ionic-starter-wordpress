@@ -95,4 +95,50 @@ angular.module( 'starter', [ 'ionic', 'starter.controllers', 'starter.services' 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise( '/tab/home' );
 
-} );
+} )
+
+.config( function( $httpProvider ) {
+  $httpProvider.interceptors.push( function( $q, $rootScope ) {
+    return {
+      request: function( config ) {
+        $rootScope.$broadcast( 'loading:show' )
+        return config
+      },
+      response: function( response ) {
+        $rootScope.$broadcast( 'loading:hide' )
+        return response
+      },
+      responseError: function( rejection ) {
+        $rootScope.$broadcast( 'error:show' )
+        return $q.reject( rejection );
+      }
+    }
+  } )
+} )
+
+.run( function( $rootScope, $ionicLoading, $ionicPopup ) {
+  $rootScope.$on( 'loading:show', function() {
+    $ionicLoading.show( { template: 'Loading...' } )
+  } )
+
+  $rootScope.$on( 'loading:hide', function() {
+    $ionicLoading.hide()
+  } )
+
+  $rootScope.$on( 'error:show', function() {
+    $ionicPopup.alert( {
+      title: 'Error',
+      template: 'The internet connection appears to be offline.'
+    } );
+  } )
+} )
+
+.controller('MainCtrl', function($http, $ionicLoading) {
+  var _this = this
+
+  $http.jsonp('http://api.openbeerdatabase.com/v1/breweries.json?callback=JSON_CALLBACK').then(function(result) {
+    _this.breweries = result.data.breweries
+  })
+})
+
+;
