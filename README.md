@@ -24,6 +24,14 @@ $ npm install -g ionic cordova
 $ ionic start myApp https://github.com/miya0001/ionic-starter-wordpress
 ```
 
+Open your `myApp/www/js/app.js` and edit [here](https://github.com/miya0001/ionic-starter-wordpress/blob/master/js/app.js#L11) like following.
+
+```javascript
+.constant( 'config', {
+  api: 'http://example.com/wp-json/wp/v2'
+} )
+```
+
 #### 3. Run it
 
 Then, `cd` into `myApp` and run:
