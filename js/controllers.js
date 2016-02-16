@@ -29,7 +29,7 @@ angular.module( 'starter.controllers', [ 'ionic' ] )
 .controller( 'pagesCtrl', function( $scope, WP ) {
   var query = {
     post_type: 'pages',
-    per_page: 100,
+    per_page: 10,
     orderby: 'menu_order',
     order: 'asc',
     parent: 0
@@ -45,7 +45,15 @@ angular.module( 'starter.controllers', [ 'ionic' ] )
   } );
 } )
 
-.controller( 'galleryCtrl', function( $scope ) {} )
+.controller( 'galleryCtrl', function( $scope, WP ) {
+  var query = {
+    post_type: 'media',
+    per_page: 20,
+  }
+  WP.query( query ).$promise.then( function( posts ) {
+    $scope.posts = posts;
+  } );
+} )
 
 .filter( 'get_post_thumbnail', [ 'config', function( config ) {
   return function ( post, size ) {

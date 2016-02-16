@@ -1,9 +1,7 @@
 <ion-view view-title="Gallery">
   <ion-content>
-    <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
-    </ion-list>
+    <span class="" ng-repeat="post in posts" href="#/tab/pages/{{post.id}}">
+      <img ng-src="{{post.media_details.sizes.thumbnail.source_url}}">
+    </span>
   </ion-content>
 </ion-view>
