@@ -30,6 +30,8 @@ $ ionic start myApp https://github.com/miya0001/ionic-starter-wordpress
 
 Open your `myApp/www/js/app.js` and change [here](https://github.com/miya0001/ionic-starter-wordpress/blob/master/js/app.js#L11) to your own URL like following.
 
+If you want to try quickly, you can skip here.
+
 ```javascript
 .constant( 'config', {
   api: 'http://example.com/wp-json/wp/v2'
