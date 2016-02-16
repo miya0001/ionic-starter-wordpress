@@ -40,7 +40,11 @@ angular.module( 'starter.controllers', [ 'ionic' ] )
 } )
 
 .controller( 'pageCtrl', function( $scope, $stateParams, WP ) {
-  WP.get( { post_type: 'pages', id: $stateParams.id } ).$promise.then( function( post ) {
+  var query = {
+    post_type: 'pages',
+    id: $stateParams.id
+  };
+  WP.get( query ).$promise.then( function( post ) {
     $scope.post = post;
   } );
 } )
