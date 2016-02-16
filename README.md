@@ -1,6 +1,8 @@
-# Ionic starter template for WordPress + WP-API v2
+# Create a Mobile Application using WordPress + Ionic Framework
 
-This is an addon starter template for the [Ionic Framework](http://ionicframework.com/).
+This is a starter template for the [Ionic Framework](http://ionicframework.com/).
+
+You can create Mobile Application using WordPress + WP-API v2, Ionic Framework, AngularJS.
 
 ## How to use this template
 
@@ -10,21 +12,23 @@ To use this, either create a new ionic project using the ionic node.js utility, 
 
 ### With the Ionic tool:
 
-Take the name after `ionic-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
-
 #### 1. Install Ionic
 
 ```bash
 $ npm install -g ionic cordova
 ```
 
-#### 2. Start a project
+#### 2. Install WordPress REST API (Version 2)
+
+Please install [WordPress REST API (Version 2)](https://ja.wordpress.org/plugins/rest-api/) into your WordPress site.
+
+#### 3. Start a project
 
 ```bash
 $ ionic start myApp https://github.com/miya0001/ionic-starter-wordpress
 ```
 
-Open your `myApp/www/js/app.js` and edit [here](https://github.com/miya0001/ionic-starter-wordpress/blob/master/js/app.js#L11) like following.
+Open your `myApp/www/js/app.js` and change [here](https://github.com/miya0001/ionic-starter-wordpress/blob/master/js/app.js#L11) to your own URL like following.
 
 ```javascript
 .constant( 'config', {
@@ -32,7 +36,7 @@ Open your `myApp/www/js/app.js` and edit [here](https://github.com/miya0001/ioni
 } )
 ```
 
-#### 3. Run it
+#### 4. Run it
 
 Then, `cd` into `myApp` and run:
 
@@ -50,7 +54,4 @@ $ ionic serve
 
 Substitute ios for android if not on a Mac, but if you can, the ios development toolchain is a lot easier to work with until you need to do anything custom to Android.
 
-## Requires
-
-* Ionic latest
-* WordPress + WP-API v2
+[See more information](http://ionicframework.com/).
