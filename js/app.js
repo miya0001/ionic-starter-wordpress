@@ -8,7 +8,7 @@
 angular.module( 'starter', [ 'ionic', 'starter.controllers', 'starter.services' ] )
 
 .constant( 'config', {
-  api: 'http://wp.dev/wp-json/wp/v2'
+  api: 'http://api.wp-app.org/wp-json/wp/v2'
 } )
 
 .run( function( $ionicPlatform ) {
