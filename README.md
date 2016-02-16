@@ -1,4 +1,4 @@
-# Create a Mobile Application using WordPress + Ionic Framework
+# Create a Mobile Application using WordPress + WP-API + Ionic Framework
 
 This is a starter template for the [Ionic Framework](http://ionicframework.com/).
 
