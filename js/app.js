@@ -8,7 +8,7 @@
 angular.module( 'starter', [ 'ionic', 'starter.controllers', 'starter.services' ] )
 
 .constant( 'config', {
-  api: 'http://api.wp-app.org/wp-json/wp/v2'
+  api: 'http://api.wp-app.org/wp-json/wp/v2' // Your WordPress
 } )
 
 .run( function( $ionicPlatform ) {
@@ -93,42 +93,6 @@ angular.module( 'starter', [ 'ionic', 'starter.controllers', 'starter.services' 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise( '/app/home' );
 
-} )
-
-.config( function( $httpProvider ) {
-  $httpProvider.interceptors.push( function( $q, $rootScope ) {
-    return {
-      request: function( config ) {
-        $rootScope.$broadcast( 'loading:show' )
-        return config
-      },
-      response: function( response ) {
-        $rootScope.$broadcast( 'loading:hide' )
-        return response
-      },
-      responseError: function( rejection ) {
-        $rootScope.$broadcast( 'error:show' )
-        return $q.reject( rejection );
-      }
-    }
-  } )
-} )
-
-.run( function( $rootScope, $ionicLoading, $ionicPopup ) {
-  $rootScope.$on( 'loading:show', function() {
-    $ionicLoading.show( { template: 'Loading...' } )
-  } )
-
-  $rootScope.$on( 'loading:hide', function() {
-    $ionicLoading.hide()
-  } )
-
-  $rootScope.$on( 'error:show', function() {
-    $ionicPopup.alert( {
-      title: 'Error',
-      template: 'The internet connection appears to be offline.'
-    } );
-  } )
 } )
 
 ;
