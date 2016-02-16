@@ -26,7 +26,7 @@ $ ionic start myApp https://github.com/miya0001/ionic-starter-wordpress
 
 #### 3. Run it
 
-Then, cd into `myApp` and run:
+Then, `cd` into `myApp` and run:
 
 ```bash
 $ ionic platform add ios
