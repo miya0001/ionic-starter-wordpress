@@ -37,25 +37,23 @@ angular.module( 'starter', [ 'ionic', 'starter.controllers', 'starter.services' 
   .state( 'app', {
     url: '/app',
     abstract: true,
-    templateUrl: 'templates/tabs.html'
+    templateUrl: 'templates/menu.html'
   } )
 
-  // Each tab has its own nav history stack:
-
-  .state( 'app.home', {
+  .state('app.home', {
     url: '/home',
     views: {
-      'tab-home': {
+      'menuContent': {
         templateUrl: 'templates/posts.html',
         controller: 'postsCtrl'
       }
     }
-  } )
+  })
 
   .state('app.single', {
     url: '/posts/:id',
     views: {
-      'tab-home': {
+      'menuContent': {
         templateUrl: 'templates/single.html',
         controller: 'singleCtrl'
       }
@@ -65,7 +63,7 @@ angular.module( 'starter', [ 'ionic', 'starter.controllers', 'starter.services' 
   .state( 'app.pages', {
     url: '/pages',
     views: {
-      'tab-pages': {
+      'menuContent': {
         templateUrl: 'templates/pages.html',
         controller: 'pagesCtrl'
       }
@@ -75,7 +73,7 @@ angular.module( 'starter', [ 'ionic', 'starter.controllers', 'starter.services' 
   .state('app.page', {
     url: '/pages/:id',
     views: {
-      'tab-pages': {
+      'menuContent': {
         templateUrl: 'templates/page.html',
         controller: 'pageCtrl'
       }
@@ -85,7 +83,7 @@ angular.module( 'starter', [ 'ionic', 'starter.controllers', 'starter.services' 
   .state( 'app.gallery', {
     url: '/gallery',
     views: {
-      'tab-gallery': {
+      'menuContent': {
         templateUrl: 'templates/gallery.html',
         controller: 'galleryCtrl'
       }
@@ -132,13 +130,5 @@ angular.module( 'starter', [ 'ionic', 'starter.controllers', 'starter.services' 
     } );
   } )
 } )
-
-.controller('MainCtrl', function($http, $ionicLoading) {
-  var _this = this
-
-  $http.jsonp('http://api.openbeerdatabase.com/v1/breweries.json?callback=JSON_CALLBACK').then(function(result) {
-    _this.breweries = result.data.breweries
-  })
-})
 
 ;
