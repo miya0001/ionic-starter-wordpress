@@ -30,6 +30,7 @@ Please install [WordPress REST API (Version 2)](https://ja.wordpress.org/plugins
 
 ```bash
 $ ionic start myApp https://github.com/miya0001/ionic-starter-wordpress
+$ cd myApp
 $ ionic platform add ios
 $ ionic platform add android
 ```
@@ -46,13 +47,13 @@ If you want to try quickly, you can skip here.
 
 ### 4. Run it
 
-Then, `cd` into `myApp` and run:
+Run your app on iOS simulator.
 
 ```bash
 $ ionic emulate ios
 ```
 
-Or
+Or run on your browser.
 
 ```bash
 $ ionic serve
