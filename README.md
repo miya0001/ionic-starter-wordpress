@@ -10,20 +10,23 @@ You can create Mobile Application using WordPress + WP-API v2, Ionic Framework, 
 
 To use this, either create a new ionic project using the ionic node.js utility, or copy and paste this into an existing Cordova project and download a release of Ionic separately.
 
-### With the Ionic tool:
+### Requires
 
-#### 1. Install Ionic
+* Ionic
+* WordPress + WP-API v2
+
+### 1. Install Ionic
 
 ```bash
 $ npm install -g ionic cordova
 $ npm install ios-sim -g
 ```
 
-#### 2. Install WordPress REST API (Version 2)
+### 2. Install WordPress REST API (Version 2)
 
 Please install [WordPress REST API (Version 2)](https://ja.wordpress.org/plugins/rest-api/) into your WordPress site.
 
-#### 3. Start a project
+### 3. Start a project
 
 ```bash
 $ ionic start myApp https://github.com/miya0001/ionic-starter-wordpress
@@ -41,7 +44,7 @@ Open your `myApp/www/js/app.js` and change [here](https://github.com/miya0001/io
 
 If you want to try quickly, you can skip here.
 
-#### 4. Run it
+### 4. Run it
 
 Then, `cd` into `myApp` and run:
 
