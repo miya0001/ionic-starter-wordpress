@@ -1,0 +1,23 @@
+{
+  "name": "ionic-starter-wordpress",
+  "version": "1.0.0",
+  "description": "This is a starter template for the [Ionic Framework](http://ionicframework.com/).",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miya0001/ionic-starter-wordpress.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miya0001/ionic-starter-wordpress/issues"
+  },
+  "homepage": "https://github.com/miya0001/ionic-starter-wordpress#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.2.0"
+  }
+}

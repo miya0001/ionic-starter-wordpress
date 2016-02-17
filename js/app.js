@@ -44,8 +44,8 @@ angular.module( 'starter', [ 'ionic', 'starter.controllers', 'starter.services' 
     url: '/home',
     views: {
       'menuContent': {
-        templateUrl: 'templates/posts.html',
-        controller: 'postsCtrl'
+        templateUrl: 'templates/index.html',
+        controller: 'homeCtrl'
       }
     }
   })
@@ -56,26 +56,6 @@ angular.module( 'starter', [ 'ionic', 'starter.controllers', 'starter.services' 
       'menuContent': {
         templateUrl: 'templates/single.html',
         controller: 'singleCtrl'
-      }
-    }
-  })
-
-  .state( 'app.pages', {
-    url: '/pages',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/pages.html',
-        controller: 'pagesCtrl'
-      }
-    }
-  } )
-
-  .state('app.page', {
-    url: '/pages/:id',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/page.html',
-        controller: 'pageCtrl'
       }
     }
   })

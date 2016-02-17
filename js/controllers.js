@@ -1,8 +1,9 @@
 angular.module( 'starter.controllers', [ 'ionic' ] )
 
-.controller( 'postsCtrl', function( $scope, $state, WP ) {
+.controller( 'homeCtrl', function( $scope, WP ) {
   var query = {
-    post_type: 'posts'
+    endpoint: 'posts',
+    _embed: true
   }
   WP.query( query ).$promise.then( function( posts ) {
     $scope.posts = posts;
@@ -11,38 +12,16 @@ angular.module( 'starter.controllers', [ 'ionic' ] )
   $scope.reload = function() {
     WP.query( query ).$promise.then( function( posts ) {
       $scope.posts = posts;
-      $scope.$broadcast('scroll.refreshComplete');
+      $scope.$broadcast( 'scroll.refreshComplete' );
     } );
   };
 } )
 
 .controller( 'singleCtrl', function( $scope, $stateParams, WP ) {
   var query = {
-    post_type: 'posts',
-    id: $stateParams.id
-  };
-  WP.get( query ).$promise.then( function( post ) {
-    $scope.post = post;
-  } );
-} )
-
-.controller( 'pagesCtrl', function( $scope, WP ) {
-  var query = {
-    post_type: 'pages',
-    per_page: 10,
-    orderby: 'menu_order',
-    order: 'asc',
-    parent: 0
-  }
-  WP.query( query ).$promise.then( function( posts ) {
-    $scope.posts = posts;
-  } );
-} )
-
-.controller( 'pageCtrl', function( $scope, $stateParams, WP ) {
-  var query = {
-    post_type: 'pages',
-    id: $stateParams.id
+    endpoint: 'posts',
+    id: $stateParams.id,
+    _embed: true
   };
   WP.get( query ).$promise.then( function( post ) {
     $scope.post = post;
@@ -51,7 +30,7 @@ angular.module( 'starter.controllers', [ 'ionic' ] )
 
 .controller( 'galleryCtrl', function( $scope, WP ) {
   var query = {
-    post_type: 'media',
+    endpoint: 'media',
     per_page: 20,
   }
   WP.query( query ).$promise.then( function( posts ) {
@@ -71,6 +50,8 @@ angular.module( 'starter.controllers', [ 'ionic' ] )
     if ( post._embedded && post._embedded[scheme] && post._embedded[scheme].length ) {
       if ( post._embedded[scheme][0].media_details.sizes[size] ) {
         return post._embedded[scheme][0].media_details.sizes[size].source_url;
+      } else {
+        return post._embedded[scheme][0].media_details.sizes['full'].source_url;
       }
     }
   };
