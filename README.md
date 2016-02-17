@@ -26,6 +26,8 @@ Please install [WordPress REST API (Version 2)](https://ja.wordpress.org/plugins
 
 ```bash
 $ ionic start myApp https://github.com/miya0001/ionic-starter-wordpress
+$ ionic platform add ios
+$ ionic platform add android
 ```
 
 Open your `myApp/www/js/app.js` and change [here](https://github.com/miya0001/ionic-starter-wordpress/blob/master/js/app.js#L11) to your own URL like following.
@@ -43,8 +45,6 @@ If you want to try quickly, you can skip here.
 Then, `cd` into `myApp` and run:
 
 ```bash
-$ ionic platform add ios
-$ ionic build ios
 $ ionic emulate ios
 ```
 
