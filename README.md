@@ -16,6 +16,7 @@ To use this, either create a new ionic project using the ionic node.js utility, 
 
 ```bash
 $ npm install -g ionic cordova
+$ npm install ios-sim -g
 ```
 
 #### 2. Install WordPress REST API (Version 2)
