@@ -7,8 +7,9 @@
 // 'starter.controllers' is found in controllers.js
 angular.module( 'starter', [ 'ionic', 'starter.controllers', 'starter.services' ] )
 
-.constant( 'config', {
-  api: 'http://api.wp-app.org/wp-json/wp/v2' // Your WordPress
+.constant( '$config', {
+  api: 'http://api.wp-app.org/wp-json/wp/v2', // Your WordPress
+  frontpage: 'front-page' // The slug of front page
 } )
 
 .run( function( $ionicPlatform ) {
@@ -26,31 +27,67 @@ angular.module( 'starter', [ 'ionic', 'starter.controllers', 'starter.services' 
   } );
 } )
 
-.config( function( $stateProvider, $urlRouterProvider ) {
+.config( function( $stateProvider, $urlRouterProvider, $config ) {
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
-  $stateProvider
 
   // setup an abstract state for the tabs directive
-  .state( 'app', {
+  $stateProvider.state( 'app', {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html'
-  } )
+  } );
 
-  .state('app.home', {
-    url: '/home',
+  if ( $config.frontpage ) {
+    $stateProvider.state('app.home', {
+      cache: false,
+      url: '/home',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/single.html',
+          controller: 'frontpageCtrl'
+        }
+      }
+    });
+  } else {
+    $stateProvider.state('app.home', {
+      cache: false,
+      url: '/home',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/posts.html',
+          controller: 'postsCtrl'
+        }
+      }
+    });
+  }
+
+  $stateProvider.state('app.posts', {
+    cache: false,
+    url: '/posts',
     views: {
       'menuContent': {
-        templateUrl: 'templates/index.html',
-        controller: 'homeCtrl'
+        templateUrl: 'templates/posts.html',
+        controller: 'postsCtrl'
       }
     }
-  })
+  });
 
-  .state('app.single', {
+  $stateProvider.state('app.page', {
+    cache: true,
+    url: '/pages/:id',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/single.html',
+        controller: 'pageCtrl'
+      }
+    }
+  });
+
+  $stateProvider.state('app.single', {
+    cache: true,
     url: '/posts/:id',
     views: {
       'menuContent': {
@@ -58,9 +95,10 @@ angular.module( 'starter', [ 'ionic', 'starter.controllers', 'starter.services' 
         controller: 'singleCtrl'
       }
     }
-  })
+  });
 
-  .state( 'app.gallery', {
+  $stateProvider.state( 'app.gallery', {
+    cache: false,
     url: '/gallery',
     views: {
       'menuContent': {
