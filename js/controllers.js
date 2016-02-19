@@ -3,6 +3,7 @@ angular.module( 'starter.controllers', [ 'ionic' ] )
 .controller( 'postsCtrl', function( $scope, WP ) {
   var query = {
     'endpoint': 'posts',
+    'per_page': 10,
     '_embed': true
   }
   WP.query( query ).$promise.then( function( posts ) {
@@ -20,7 +21,6 @@ angular.module( 'starter.controllers', [ 'ionic' ] )
 .controller( 'frontpageCtrl', function( $scope, $stateParams, $config, WP ) {
   var query = {
     'endpoint': 'pages',
-    'id': '',
     'filter[name]': $config.frontpage,
     '_embed': true
   };
