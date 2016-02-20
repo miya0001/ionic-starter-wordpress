@@ -1,11 +1,12 @@
 <ion-view>
   <ion-content class="padding">
-    <ion-refresher pulling-text="Pull to refresh..." on-refresh="reload()"></ion-refresher>
+    <ion-refresher pulling-text="Pull to refresh..." on-refresh="load()"></ion-refresher>
     <ion-item class="item-thumbnail-left item-icon-right" ng-repeat="post in posts" type="item-text-wrap" href="#/app/posts/{{ post.id }}">
       <img ng-src="{{ post | get_post_thumbnail: 'thumbnail' }}">
       <h2 ng-bind-html="post.title.rendered">{{ post.title.rendered }}</h2>
       <div ng-bind-html="post.excerpt.rendered">{{ post.excerpt.rendered }}</div>
       <i class="icon ion-chevron-right icon-accessory"></i>
     </ion-item>
+    <ion-infinite-scroll ng-if="moreDataCanBeLoaded" on-infinite="load()" distance="5%"></ion-infinite-scroll>
   </ion-content>
 </ion-view>

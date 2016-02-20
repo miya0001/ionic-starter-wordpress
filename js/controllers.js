@@ -1,19 +1,31 @@
 angular.module( 'starter.controllers', [ 'ionic' ] )
 
 .controller( 'postsCtrl', function( $scope, WP ) {
+  $scope.posts = [];
+  $scope.offset = 0;
+  $scope.per_page = 10;
+  $scope.moreDataCanBeLoaded = true;
+
   var query = {
     'endpoint': 'posts',
     'per_page': 10,
+    'offset': $scope.offset,
+    'filter[orderby]': 'date',
+    'filter[order]': 'DESC',
     '_embed': true
   }
-  WP.query( query ).$promise.then( function( posts ) {
-    $scope.posts = posts;
-  } );
 
-  $scope.reload = function() {
+  $scope.load = function() {
+    query.offset = $scope.offset;
     WP.query( query ).$promise.then( function( posts ) {
-      $scope.posts = posts;
-      $scope.$broadcast( 'scroll.refreshComplete' );
+      if ( posts.length) {
+        $scope.moreDataCanBeLoaded = true;
+      } else {
+        $scope.moreDataCanBeLoaded = false;
+      }
+      $scope.posts = $scope.posts.concat( posts );
+      $scope.offset = $scope.offset + $scope.per_page;
+      $scope.$broadcast( 'scroll.infiniteScrollComplete' );
     } );
   };
 } )
@@ -52,16 +64,34 @@ angular.module( 'starter.controllers', [ 'ionic' ] )
 } )
 
 .controller( 'galleryCtrl', function( $scope, WP ) {
+  $scope.posts = [];
+  $scope.offset = 0;
+  $scope.per_page = 10;
+  $scope.moreDataCanBeLoaded = true;
+
   var query = {
     'endpoint': 'media',
     'per_page': 10,
+    'offset': $scope.offset,
     'mime_type': 'image/jpeg',
     'filter[orderby]': 'date',
-    'filter[order]': 'DESC'
+    'filter[order]': 'DESC',
+    '_embed': true
   }
-  WP.query( query ).$promise.then( function( posts ) {
-    $scope.posts = posts;
-  } );
+
+  $scope.load = function() {
+    query.offset = $scope.offset;
+    WP.query( query ).$promise.then( function( posts ) {
+      if ( posts.length) {
+        $scope.moreDataCanBeLoaded = true;
+      } else {
+        $scope.moreDataCanBeLoaded = false;
+      }
+      $scope.posts = $scope.posts.concat( posts );
+      $scope.offset = $scope.offset + $scope.per_page;
+      $scope.$broadcast( 'scroll.infiniteScrollComplete' );
+    } );
+  };
 } )
 
 .filter( 'get_post_thumbnail', [ '$config', function( $config ) {
