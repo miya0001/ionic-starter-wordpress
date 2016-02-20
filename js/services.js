@@ -57,7 +57,7 @@ angular.module( 'starter.services', [ 'ngResource' ] )
   } );
 } )
 
-.factory( 'WP', [ '$resource', '$config', function( $resource, $config ) {
+.factory( 'WP_Query', [ '$resource', '$config', function( $resource, $config ) {
   var api = $config.api + "/:endpoint/:id";
   var params = {
     endpoint: '@endpoint',

@@ -1,6 +1,17 @@
 angular.module( 'starter.controllers', [ 'ionic' ] )
 
-.controller( 'postsCtrl', function( $scope, WP ) {
+.controller( 'frontpageCtrl', function( $scope, $stateParams, $config, WP_Query ) {
+  var query = {
+    'endpoint': 'pages',
+    'filter[name]': $config.frontpage,
+    '_embed': true
+  };
+  WP_Query.query( query ).$promise.then( function( posts ) {
+    $scope.post = posts[0];
+  } );
+} )
+
+.controller( 'postsCtrl', function( $scope, WP_Query ) {
   $scope.posts = [];
   $scope.offset = 0;
   $scope.per_page = 10;
@@ -16,7 +27,6 @@ angular.module( 'starter.controllers', [ 'ionic' ] )
   }
 
   $scope.reload = function() {
-    console.log($scope);
     $scope.posts = [];
     $scope.offset = 0;
     $scope.load();
@@ -24,7 +34,7 @@ angular.module( 'starter.controllers', [ 'ionic' ] )
 
   $scope.load = function() {
     query.offset = $scope.offset;
-    WP.query( query ).$promise.then( function( posts ) {
+    WP_Query.query( query ).$promise.then( function( posts ) {
       if ( posts.length) {
         $scope.moreDataCanBeLoaded = true;
       } else {
@@ -38,18 +48,7 @@ angular.module( 'starter.controllers', [ 'ionic' ] )
   };
 } )
 
-.controller( 'frontpageCtrl', function( $scope, $stateParams, $config, WP ) {
-  var query = {
-    'endpoint': 'pages',
-    'filter[name]': $config.frontpage,
-    '_embed': true
-  };
-  WP.query( query ).$promise.then( function( posts ) {
-    $scope.post = posts[0];
-  } );
-} )
-
-.controller( 'singleCtrl', function( $scope, $stateParams, WP ) {
+.controller( 'singleCtrl', function( $scope, $stateParams, WP_Query ) {
   var query = {
     'endpoint': 'posts',
     'id': $stateParams.id,
@@ -60,18 +59,18 @@ angular.module( 'starter.controllers', [ 'ionic' ] )
   } );
 } )
 
-.controller( 'pageCtrl', function( $scope, $stateParams, WP ) {
+.controller( 'pageCtrl', function( $scope, $stateParams, WP_Query ) {
   var query = {
     'endpoint': 'pages',
     'id': $stateParams.id,
     '_embed': true
   };
-  WP.get( query ).$promise.then( function( post ) {
+  WP_Query.get( query ).$promise.then( function( post ) {
     $scope.post = post;
   } );
 } )
 
-.controller( 'galleryCtrl', function( $scope, WP ) {
+.controller( 'galleryCtrl', function( $scope, WP_Query ) {
   $scope.posts = [];
   $scope.offset = 0;
   $scope.per_page = 10;
@@ -88,7 +87,6 @@ angular.module( 'starter.controllers', [ 'ionic' ] )
   }
 
   $scope.reload = function() {
-    console.log($scope);
     $scope.posts = [];
     $scope.offset = 0;
     $scope.load();
@@ -96,7 +94,7 @@ angular.module( 'starter.controllers', [ 'ionic' ] )
 
   $scope.load = function() {
     query.offset = $scope.offset;
-    WP.query( query ).$promise.then( function( posts ) {
+    WP_Query.query( query ).$promise.then( function( posts ) {
       if ( posts.length) {
         $scope.moreDataCanBeLoaded = true;
       } else {
