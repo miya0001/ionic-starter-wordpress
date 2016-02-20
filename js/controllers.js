@@ -54,7 +54,7 @@ angular.module( 'starter.controllers', [ 'ionic' ] )
     'id': $stateParams.id,
     '_embed': true
   };
-  WP.get( query ).$promise.then( function( post ) {
+  WP_Query.get( query ).$promise.then( function( post ) {
     $scope.post = post;
   } );
 } )
@@ -135,6 +135,8 @@ angular.module( 'starter.controllers', [ 'ionic' ] )
     if ( ! size ) {
       size = 'thumbnail';
     }
+
+    console.log(size);
 
     if ( post.media_details.sizes[size] ) {
       return post.media_details.sizes[size].source_url;

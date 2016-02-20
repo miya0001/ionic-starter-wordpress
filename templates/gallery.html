@@ -2,13 +2,13 @@
   <ion-content>
     <ion-refresher pulling-text="Pull to refresh..." on-refresh="reload()"></ion-refresher>
 
-    <div class="list card" ng-repeat="post in posts" ng-if="!! ( post | get_image_src: large )">
+    <div class="list card" ng-repeat="post in posts" ng-if="!! ( post | get_image_src: 'large' )">
       <div class="item ">
         <h2>{{ post.title.rendered }}</h2>
         <p>{{ post.description }}</p>
       </div>
       <div class="item item-image">
-        <img ng-src="{{ post | get_image_src: large }}">
+        <img ng-src="{{ post | get_image_src: 'large' }}">
       </div>
       <div class="item caption" ng-bind-html="post.caption">{{ post.caption }}</div>
     </div>
