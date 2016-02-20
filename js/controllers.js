@@ -15,6 +15,13 @@ angular.module( 'starter.controllers', [ 'ionic' ] )
     '_embed': true
   }
 
+  $scope.reload = function() {
+    console.log($scope);
+    $scope.posts = [];
+    $scope.offset = 0;
+    $scope.load();
+  }
+
   $scope.load = function() {
     query.offset = $scope.offset;
     WP.query( query ).$promise.then( function( posts ) {
@@ -26,6 +33,7 @@ angular.module( 'starter.controllers', [ 'ionic' ] )
       $scope.posts = $scope.posts.concat( posts );
       $scope.offset = $scope.offset + $scope.per_page;
       $scope.$broadcast( 'scroll.infiniteScrollComplete' );
+      $scope.$broadcast('scroll.refreshComplete');
     } );
   };
 } )
@@ -79,6 +87,13 @@ angular.module( 'starter.controllers', [ 'ionic' ] )
     '_embed': true
   }
 
+  $scope.reload = function() {
+    console.log($scope);
+    $scope.posts = [];
+    $scope.offset = 0;
+    $scope.load();
+  }
+
   $scope.load = function() {
     query.offset = $scope.offset;
     WP.query( query ).$promise.then( function( posts ) {
@@ -90,6 +105,7 @@ angular.module( 'starter.controllers', [ 'ionic' ] )
       $scope.posts = $scope.posts.concat( posts );
       $scope.offset = $scope.offset + $scope.per_page;
       $scope.$broadcast( 'scroll.infiniteScrollComplete' );
+      $scope.$broadcast('scroll.refreshComplete');
     } );
   };
 } )
