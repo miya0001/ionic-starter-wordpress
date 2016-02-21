@@ -4,15 +4,30 @@ This is a starter template for the [Ionic Framework](http://ionicframework.com/)
 
 You can create Mobile Application using WordPress + WP-API v2, Ionic Framework, AngularJS.
 
+## Demo
+
+* [https://www.youtube.com/watch?v=CG30n0h0Rpg](https://www.youtube.com/watch?v=CG30n0h0Rpg)
+
+## Screenshots
+
+### Desktop browser testing
+
+![](https://www.evernote.com/l/ABUHcWWDgXJG9KbZNu9bqqAngUwLqIXUsSAB/image.png)
+
+### Simulator testing
+
+![](https://www.evernote.com/l/ABWzYURP9hVNQ5bRL7iy9V5lTmIaGJgcp-MB/image.png)
+
 ## Features
 
 This template gets contents through WP-API v2.
 
-* Infinite Scroll
+* Infinite scroll
 * Pull to refresh
 * Static front page
 * Posts
 * Gallery
+
 
 ## How to use this template
 
