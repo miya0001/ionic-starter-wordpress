@@ -6,7 +6,7 @@
           <img ng-src="{{ post | get_post_thumbnail }}">
         </div>
         <h1 class="entry-title" ng-bind-html="post.title.rendered">{{ post.title.rendered }}</h1>
-        <div class="post-meta"><div class="post-date">{{ post.date_gmt | date: "yyyy/MM/dd H:mm:ss" }}</div></div>
+        <div class="post-meta"><div class="post-date" ng-if="!!post.date_gmt">{{ post.date_gmt + '+00:00' | date: "yyyy/MM/dd H:mm:ss" }}</div></div>
       </header>
       <div class="entry-content">
         <div ng-bind-html="post.content.rendered">{{ post.content.rendered }}</div>
