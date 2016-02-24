@@ -46,7 +46,7 @@ angular.module( 'starter', [ 'ionic', 'starter.controllers', 'starter.services' 
       url: '/home',
       views: {
         'menuContent': {
-          templateUrl: 'templates/single.html',
+          templateUrl: 'templates/page.html',
           controller: 'frontpageCtrl'
         }
       }
@@ -80,7 +80,7 @@ angular.module( 'starter', [ 'ionic', 'starter.controllers', 'starter.services' 
     url: '/pages/:id',
     views: {
       'menuContent': {
-        templateUrl: 'templates/single.html',
+        templateUrl: 'templates/page.html',
         controller: 'pageCtrl'
       }
     }
