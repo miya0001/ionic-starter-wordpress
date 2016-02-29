@@ -20,8 +20,6 @@ You can create Mobile Application using WordPress + WP-API v2, Ionic Framework, 
 
 ## Features
 
-This template gets contents through WP-API v2.
-
 * Infinite scroll
 * Pull to refresh
 * Static front page
