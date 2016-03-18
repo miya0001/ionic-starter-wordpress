@@ -1,15 +1,10 @@
-<ion-view>
-  <ion-content class="padding">
-    <div class="post">
-      <header class="entry-header">
-        <div class="post-thumbnail" ng-if="!!( post | get_post_thumbnail )">
-          <img ng-src="{{ post | get_post_thumbnail }}">
-        </div>
-        <h1 class="entry-title" ng-bind-html="post.title.rendered">{{ post.title.rendered }}</h1>
-      </header>
-      <div class="entry-content">
-        <div ng-bind-html="post.content.rendered">{{ post.content.rendered }}</div>
-      </div>
-    </div>
+<ion-view title="Posts">
+  <ion-content>
+    <have-posts api-root="{{ apiRoot }}"
+          post-type="pages" filter="{ name: 'front-page' }" per-page="1">
+      <the-post-thumbnail size="post-thumbnail"></the-post-thumbnail>
+      <h2 class="entry-title"><the-title></the-title></h1>
+      <the-content></the-content>
+    </have-posts>
   </ion-content>
 </ion-view>

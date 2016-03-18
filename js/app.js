@@ -5,11 +5,14 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module( 'starter', [ 'ionic', 'starter.controllers', 'starter.services' ] )
+angular.module( 'starter', [
+  'ionic',
+  'starter.controllers',
+  'wp'
+] )
 
 .constant( '$config', {
-  api: 'http://api.wp-app.org/wp-json/wp/v2', // Your WordPress
-  frontpage: 'front-page' // The slug of front page
+  apiRoot: 'http://api.wp-app.org/wp-json/wp/v2'
 } )
 
 .run( function( $ionicPlatform ) {
@@ -40,29 +43,16 @@ angular.module( 'starter', [ 'ionic', 'starter.controllers', 'starter.services' 
     templateUrl: 'templates/menu.html'
   } );
 
-  if ( $config.frontpage ) {
-    $stateProvider.state('app.home', {
-      cache: false,
-      url: '/home',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/page.html',
-          controller: 'frontpageCtrl'
-        }
+  $stateProvider.state('app.home', {
+    cache: false,
+    url: '/home',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/page.html',
+        controller: 'page'
       }
-    });
-  } else {
-    $stateProvider.state('app.home', {
-      cache: false,
-      url: '/home',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/posts.html',
-          controller: 'postsCtrl'
-        }
-      }
-    });
-  }
+    }
+  });
 
   $stateProvider.state('app.posts', {
     cache: false,
@@ -70,18 +60,7 @@ angular.module( 'starter', [ 'ionic', 'starter.controllers', 'starter.services' 
     views: {
       'menuContent': {
         templateUrl: 'templates/posts.html',
-        controller: 'postsCtrl'
-      }
-    }
-  });
-
-  $stateProvider.state('app.page', {
-    cache: true,
-    url: '/pages/:id',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/page.html',
-        controller: 'pageCtrl'
+        controller: 'posts'
       }
     }
   });
@@ -92,21 +71,10 @@ angular.module( 'starter', [ 'ionic', 'starter.controllers', 'starter.services' 
     views: {
       'menuContent': {
         templateUrl: 'templates/single.html',
-        controller: 'singleCtrl'
+        controller: 'single'
       }
     }
   });
-
-  $stateProvider.state( 'app.gallery', {
-    cache: false,
-    url: '/gallery',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/gallery.html',
-        controller: 'galleryCtrl'
-      }
-    }
-  } );
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise( '/app/home' );
