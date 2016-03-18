@@ -15,5 +15,5 @@ gulp.task( 'default', [ 'sass' ], function () {
       './node_modules/jquery/dist/jquery.min.js',
       './node_modules/wp-angularjs/build/wp-angular.min.js'
     ] )
-    .pipe( gulp.dest( 'js/lib' ) );
+    .pipe( gulp.dest( 'lib' ) );
 } );
