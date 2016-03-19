@@ -11,6 +11,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task( 'default', [ 'sass' ], function () {
+  gulp.watch( './css/sass/style.scss', ['sass'] );
   return gulp.src( [
       './node_modules/jquery/dist/jquery.min.js',
       './node_modules/wp-angularjs/build/wp-angular.min.js'
